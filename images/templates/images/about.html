@@ -1,0 +1,68 @@
+{% extends 'images/base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="about-header" style="background-image: url('{% static 'images/home_page.jpg' %}');">
+    <div class="about-header-content">
+        <h1>About Us - Prototype</h1>
+        <p>The data used employs a rigorous scientific methodology to characterize genetic targets. The process includes using cell lines with natural expression levels of the target protein, comparing results with CRISPR-edited cell lines, and applying multiple techniques like Western blotting, co-immunoprecipitation, and immunofluorescence microscopy. <br>This website is a prototype for future development. It currently serves as a preliminary model to explore and demonstrate potential functionalities. The data presented here is owned and maintained by YcharOS. For more information, please visit their website <a href="https://ycharos.com/" target="_blank">here</a></p>
+        <div class="cta-buttons">
+            <a href="{% url 'browse' %}" class="btn primary-btn">Learn More</a>
+            <a href="{% url 'contact' %}" class="btn secondary-btn">Contact Us</a>
+        </div>        
+
+    </div>
+</div>
+<div class="about-services">
+    <div class="service">
+        <div class="service-image-container">
+            <img src="{% static 'images/test(1).png' %}" alt="Our Approach" class="service-image">
+        </div>
+        <h3> Approach</h3>
+        <p>Using cell lines with natural expression levels, CRISPR-edited comparisons, and various techniques to ensure accuracy and reliability.</p>
+    </div>
+    <div class="service">
+        <div class="service-image-container">
+            <img src="{% static 'images/science.png' %}" alt="Our Commitment" class="service-image">
+        </div>
+        <h3> Commitment</h3>
+        <p>Dedicated to open science principles, ensuring transparency, and freely available research without patent restrictions.</p>
+    </div>
+    <div class="service">
+        <div class="service-image-container">
+            <img src="{% static 'images/medical-research.png' %}" alt="Our Heritage" class="service-image">
+        </div>
+        <h3> Heritage</h3>
+        <p>Building on groundbreaking work at a renowned neuroscience institute, refining and expanding methods in protein research.</p>
+    </div>
+</div>
+<style>
+    .cta-buttons .primary-btn {
+        background-color: #5078a0; /* var(--accent-color) */
+        color: #f5f9fc; /* var(--light-text-color) */
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .cta-buttons .secondary-btn {
+        background-color: #9cb3c7; /* var(--secondary-color) */
+        color: #f5f9fc; /* var(--light-text-color) */
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .cta-buttons .primary-btn:hover,
+    .cta-buttons .secondary-btn:hover {
+        opacity: 0.8;
+    }
+    </style>
+    
+{% endblock %}

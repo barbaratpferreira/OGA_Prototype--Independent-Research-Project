@@ -1,0 +1,50 @@
+{% extends 'images/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="about-header" style="background-image: url('{% static 'images/about_us.png' %}');">
+    <div class="about-header-content">
+        <h1>OGA Prototype</h1>
+        <p>Through open science, we are committed to characterising commercially available reagent antibodies for every human protein.<br>Please note that this website is a prototype under development. The data provided is owned by YCharOS, visit their website <a href="https://ycharos.com/" target="_blank">here</a> for further details
+        </p>
+        <div class="cta-buttons">
+            <a href="{% url 'about' %}" class="btn primary-btn">Learn More</a>
+            <a href="{% url 'browse' %}" class="btn secondary-btn">Browse</a>
+        </div>
+    </div>
+</div>
+<section class="cta">
+    <h2>Contact Us</h2>
+    <p>We value your input; please reach out to us through our <a href="{% url 'contact' %}">contact page</a>.</p>
+</section>
+
+<style>
+    .cta-buttons .primary-btn {
+        background-color: #5078a0; /* var(--accent-color) */
+        color: #f5f9fc; /* var(--light-text-color) */
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .cta-buttons .secondary-btn {
+        background-color: #9cb3c7; /* var(--secondary-color) */
+        color: #f5f9fc; /* var(--light-text-color) */
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .cta-buttons .primary-btn:hover,
+    .cta-buttons .secondary-btn:hover {
+        opacity: 0.8;
+    }
+    </style>
+{% endblock %}
+

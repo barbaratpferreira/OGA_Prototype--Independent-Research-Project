@@ -1,0 +1,48 @@
+{% extends 'images/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="browse-container">
+    <div class="info-box">
+        <p>This website contains <a href="https://ycharos.com/" target="_blank">YCharOS</a> data. You can also find these reports on <a href="https://zenodo.org/communities/ycharos/records?q=&l=list&p=1&s=10&sort=newest" target="_blank">Zenodo</a> website and in the form of peer-reviewed articles at <a href="https://f1000research.com/ycharos" target="_blank">F1000</a>.</p>
+    </div>
+    <div class="banner">
+        <img src="{% static 'images/browse_banner.jpg' %}" alt="Browse Banner">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search genes...">
+        </div>
+    </div>
+
+    <div id="geneList">
+        <ul>
+            {% for gene in genes %}
+                <li><a href="{% url 'gene_detail' gene.id %}">{{ gene.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    function searchGenes() {
+        var input = document.getElementById('searchInput');
+        var filter = input.value.toUpperCase();
+        var geneList = document.getElementById("geneList");
+        var genes = geneList.getElementsByTagName('li');
+
+        for (var i = 0; i < genes.length; i++) {
+            var txtValue = genes[i].textContent || genes[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                genes[i].style.display = "";
+            } else {
+                genes[i].style.display = "none";
+            }
+        }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', searchGenes);
+</script>
+{% endblock %}
+
+
+
+

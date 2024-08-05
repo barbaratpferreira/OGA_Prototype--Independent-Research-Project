@@ -1,0 +1,27 @@
+{% extends 'images/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="contact-section">
+    <div class="wrapper">
+        <h1>Contact Us</h1>
+        <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-box">
+                <textarea name="message" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="input-box">
+                <button type="submit" class="btn contact-submit-btn">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

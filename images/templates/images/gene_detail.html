@@ -1,0 +1,60 @@
+{% extends 'images/base.html' %}
+{% load static %}
+
+{% block title %}{{ gene.name }} Details{% endblock %}
+
+{% block content %}
+<div class="gene-info">
+    <h1>{{ gene.name }}</h1>
+    <p><strong>Description:</strong> {{ gene.description }}</p>
+
+    <div class="gene-image">
+        {% if file_exists %}
+            <img src="{{ media_url }}{{ image_path }}" alt="{{ gene.name }} image">
+        {% else %}
+            <p>No image available for this gene.</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="antibody-section">
+    {% for antibody in antibodies %}
+        <div class="antibody-info">
+            <div class="antibody-header">
+                <h2>{{ antibody.name }}</h2>
+            </div>
+            <div class="image-pair">
+                {% for image in antibody.image_set.all %}
+                    <div class="image-container">
+                        <h3>{{ image.get_image_type_display }}</h3>
+                        {% if image.image %}
+                            <img src="{{ image.image.url }}" alt="{{ antibody.name }} - {{ image.get_image_type_display }}">
+                        {% else %}
+                            <p class="no-image">No image available</p>
+                        {% endif %}
+                    </div>
+                {% empty %}
+                    <p>No images available for this antibody.</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% empty %}
+        <p>No antibodies found for this gene.</p>
+    {% endfor %}
+</div>
+
+<script>
+    console.log('Template rendered successfully');
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', function() {
+            console.error('Failed to load image:', this.src);
+            this.style.display = 'none';
+            let errorMsg = document.createElement('p');
+            errorMsg.textContent = 'Error loading image';
+            errorMsg.classList.add('error-msg');
+            this.parentNode.insertBefore(errorMsg, this);
+        });
+    });
+</script>
+{% endblock %}
+

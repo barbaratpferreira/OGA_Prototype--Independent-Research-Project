@@ -1,0 +1,14 @@
+{% extends 'images/base.html' %}
+{% load static %}
+
+{% block title %}Message Sent{% endblock %}
+
+{% block content %}
+<div class="contact-success-section">
+    <div class="wrapper">
+        <h1>Thank You!</h1>
+        <p>Your message has been sent successfully. We'll get back to you soon.</p>
+        <a href="{% url 'home' %}" class="btn">Return to Home</a>
+    </div>
+</div>
+{% endblock %}

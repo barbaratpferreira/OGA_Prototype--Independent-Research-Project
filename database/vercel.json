@@ -15,5 +15,11 @@
       "src": "/(.*)",
       "dest": "database/wsgi.py"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
   ]
 }

@@ -6,7 +6,6 @@ This project is a Django-based web application for gene and antibody research. I
 
 ## Features
 
-- User authentication (sign in and register)
 - Gene browsing and searching functionality
 - Detailed gene information pages
 - Antibody data associated with genes
